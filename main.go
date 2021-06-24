@@ -38,7 +38,7 @@ func handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(r.Body)
+	fmt.Println(rr.Body)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(rrb)
 }
@@ -50,7 +50,8 @@ type request struct {
 	Body    []byte      `json:"body"`
 }
 
-// curl -i -X OPTIONS localhost:8080     команда для отправки запроса из консоли
+// для отправик пост запроса из консоли
+// curl -i -X POST -H 'Content-Type: application/json' -d '{"field": [{"key": "value", "test": "new"] }' localhost:8080
 
 // флаги для запуска программы
 // func getParams() string {
@@ -59,4 +60,11 @@ type request struct {
 // 	newPtr := flag.String("new", "new", "a string")
 
 // 	flag.Parse()
+// }
+
+// функция замены элементов тела запроса
+// вынести в middleware
+// func changeItem(json, filed, old, new) jsonResponce {
+
+// 	return jsonResponce
 // }
